@@ -17,8 +17,18 @@ DevelopmentConfig = {
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
+    # redis session config
+    "driver": "redis",
+    "driver_settings":{
+        "host": 'localhost',
+        "port": 6379,
+        "db": 0,
+        "max_connections": 1024,
+    }
+
 }
 
+# 测试环境
 TestingConfig = {
     "debug": True,
     "allow_remote_access": True,
@@ -27,8 +37,18 @@ TestingConfig = {
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
+    # redis session config
+    "driver": "redis",
+    "driver_settings":{
+        "host": 'localhost',
+        "port": 6379,
+        "db": 0,
+        "max_connections": 1024,
+    }
 }
 
+
+# 生产环境
 ProductionConfig = {
     "debug": True,
     "allow_remote_access": True,
@@ -37,6 +57,14 @@ ProductionConfig = {
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
+    # redis session config
+    "driver": "redis",
+    "driver_settings":{
+        "host": 'localhost',
+        "port": 6379,
+        "db": 0,
+        "max_connections": 1024,
+    }
 }
 
 config = {

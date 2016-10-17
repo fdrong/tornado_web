@@ -14,6 +14,7 @@ class LoginHandler(tornado.web.RequestHandler):
         self.render('login.html')
 
     def post(self):
+        # self.set_secure_cookie("username", self.get_argument("username"), httponly=True, secure=True)
         self.set_secure_cookie("username", self.get_argument("username"))
         self.redirect('/')
 

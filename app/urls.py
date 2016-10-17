@@ -6,7 +6,7 @@ __author__ = 'fdrong'
 __mtime__ = '16/9/30'
 """
 from app.api_1_0.login import WelcomeHandler, LoginHandler, LogoutHandler
-
+from app.api_1_0.test import RedisSessionHandler
 
 # 首页
 urls = [
@@ -17,4 +17,10 @@ urls = [
 urls += [
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
+
+]
+
+# 测试
+urls += [
+    (r'/test/redis_session', RedisSessionHandler)
 ]
