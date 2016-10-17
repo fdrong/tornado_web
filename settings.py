@@ -14,6 +14,7 @@ DevelopmentConfig = {
     "allow_remote_access": True,
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     "static_path": os.path.join(os.path.dirname(__file__), 'static'),
+    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -24,7 +25,11 @@ DevelopmentConfig = {
         "port": 6379,
         "db": 0,
         "max_connections": 1024,
-    }
+    },
+
+    # celery config
+    "CELERY_RESULT_BACKEND": "redis://localhost:6379/1",
+    "CELERY_BROKER_URL": "redis://localhost:6379/0"
 
 }
 
@@ -34,6 +39,7 @@ TestingConfig = {
     "allow_remote_access": True,
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     "static_path": os.path.join(os.path.dirname(__file__), 'static'),
+    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -44,7 +50,10 @@ TestingConfig = {
         "port": 6379,
         "db": 0,
         "max_connections": 1024,
-    }
+    },
+    # celery config
+    "CELERY_RESULT_BACKEND": "redis://localhost:6379/1",
+    "CELERY_BROKER_URL": "redis://localhost:6379/0"
 }
 
 
@@ -54,6 +63,7 @@ ProductionConfig = {
     "allow_remote_access": True,
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     "static_path": os.path.join(os.path.dirname(__file__), 'static'),
+    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -64,7 +74,11 @@ ProductionConfig = {
         "port": 6379,
         "db": 0,
         "max_connections": 1024,
-    }
+    },
+
+    # celery config
+    "CELERY_RESULT_BACKEND": "redis://localhost:6379/1",
+    "CELERY_BROKER_URL": "redis://localhost:6379/0"
 }
 
 config = {

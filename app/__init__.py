@@ -8,11 +8,14 @@ __mtime__ = '16/9/30'
 
 import os
 import tornado.web
-from urls import urls
+from url import urls as urls
 from settings import config
 
 
+config_dict = config.get(os.environ.get('CONFIG_NAME', 'default'))
+
 app = tornado.web.Application(
     handlers=urls,
-    **config.get(os.environ.get('CONFIG_NAME', 'default'))
+    **config_dict
 )
+

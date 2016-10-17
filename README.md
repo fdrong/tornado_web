@@ -4,3 +4,6 @@
 # run
 python manage.py
 
+
+# celery run
+celery -A app.tasks worker -l info
