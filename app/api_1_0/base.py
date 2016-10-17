@@ -21,7 +21,6 @@ class BaseHandler(SessionBaseHandler):
 
     @property
     def logger(self):
-        tornado.log.LogFormatter(fmt='%(asctime)s - %(levelname)s - %(filename)s[line:%(lineno)d] - %(message)s', datefmt="%Y-%m-%d %H:%M:%S")
         return tornado.log.app_log
         # """
         # 创建一个日志对象logger，同时打印文件日志和终端日志，其中Debug级别的日志只在终端打印
@@ -45,3 +44,12 @@ class BaseHandler(SessionBaseHandler):
         # logger.addHandler(console_handler)  # 添加Handler
         # logger.setLevel(logging.INFO)  # 设置日志级别为DEBUG(级别最低)
         # return logger
+
+
+class LogFormatter(tornado.log.LogFormatter):
+    def __init__(self):
+        super(LogFormatter, self).__init__(
+            # fmt="%(color)s[%(asctime)s %(filename)s:%(funcName)s:%(lineno)d %(levelname)s]%(end_color)s %(message)s",
+            fmt="%(asctime)s - %(levelname)s - %(filename)s[line:%(lineno)d] - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
