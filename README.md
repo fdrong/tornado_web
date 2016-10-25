@@ -15,7 +15,7 @@ celery -A app.tasks worker -l info
 ## config alembic init
     sqlalchemy.url = postgresql://zeus:newpass@localhost/zeus
 
-## create alter scripts for dbs
+## create alter db scripts for dbs
     alembic revision --autogenerate -m "create tables"
-## use alter scripts 
-
+## use alter db scripts to database
+    alembic upgrade head
