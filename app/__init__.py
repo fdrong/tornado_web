@@ -8,14 +8,16 @@ __mtime__ = '16/9/30'
 
 import os
 import tornado.web
-from url import urls as urls
-from settings import config
+from .settings import urls
+from .settings import Config
+from .models import Base as DbBase
+from .settings import get_session
 
 
-config_dict = config.get(os.environ.get('CONFIG_NAME', 'default'))
+class Application(tornado.web.Application):
+    def __init__(self):
+        tornado.web.Application.__init__(self, handlers=urls, **Config)
+        self.db = get_session(DbBase)
 
-app = tornado.web.Application(
-    handlers=urls,
-    **config_dict
-)
+
 

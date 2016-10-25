@@ -7,3 +7,15 @@ python manage.py
 
 # celery run
 celery -A app.tasks worker -l info
+
+
+# with alembic
+## pip install alembic
+## alembic init migrate
+## config alembic init
+    sqlalchemy.url = postgresql://zeus:newpass@localhost/zeus
+
+## create alter scripts for dbs
+    alembic revision --autogenerate -m "create tables"
+## use alter scripts 
+

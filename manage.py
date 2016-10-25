@@ -14,8 +14,9 @@ import wsgiref.simple_server
 import os
 import tornado.options
 import logging
-from app.api_1_0.base import LogFormatter
-from app import app, config_dict
+from app.api import LogFormatter
+from app import Application
+from app.settings import Config
 
 
 from tornado.options import define, options
@@ -24,7 +25,7 @@ define("port", default=8000, help="run on the given port", type=int)
 
 # 日志配置
 define("login", default="debug")
-define("log_file_prefix", default=os.path.join(config_dict['log_path'], "tornado_main.log"))
+define("log_file_prefix", default=os.path.join(Config['log_path'], "tornado_main.log"))
 define("log_rotate_mode", default='time')   # 轮询模式: time or size
 define("log_rotate_when", default='D')      # 单位: S / M / H / D / W0 - W6
 define("log_rotate_interval", default=1)
@@ -33,6 +34,7 @@ define("log_to_stderr", default=True)
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
+    app = Application()
     [i.setFormatter(LogFormatter()) for i in logging.getLogger().handlers]
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)

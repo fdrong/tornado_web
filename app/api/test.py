@@ -6,7 +6,7 @@ __author__ = 'fdrong'
 __mtime__ = '2016/10/17'
 """
 
-from base import BaseHandler
+from app.api import BaseHandler
 import tornado.web
 import tornado.gen
 from app.tasks import add

@@ -6,7 +6,7 @@ __author__ = 'fdrong'
 __mtime__ = '16/9/30'
 """
 import tornado.web
-from base import BaseHandler
+from app.api import BaseHandler
 
 
 class LoginHandler(tornado.web.RequestHandler):

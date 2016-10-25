@@ -3,18 +3,27 @@
 """
 __title__ =''
 __author__ = 'fdrong'
+__mtime__ = '2016/10/25'
+"""
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+__title__ =''
+__author__ = 'fdrong'
 __mtime__ = '16/9/30'
 """
 
 import os
 
+BaseDir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 # 开发环境
 DevelopmentConfig = {
     "debug": True,
     "allow_remote_access": True,
-    "template_path": os.path.join(os.path.dirname(__file__), "templates"),
-    "static_path": os.path.join(os.path.dirname(__file__), 'static'),
-    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
+    "template_path": os.path.join(BaseDir, "templates"),
+    "static_path": os.path.join(BaseDir, 'static'),
+    "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -29,7 +38,10 @@ DevelopmentConfig = {
 
     # celery config
     "CELERY_RESULT_BACKEND": "redis://localhost:6379/1",
-    "CELERY_BROKER_URL": "redis://localhost:6379/0"
+    "CELERY_BROKER_URL": "redis://localhost:6379/0",
+
+    # db config
+    'SQLALCHEMY_DATABASE_URI':'postgresql://zeus:newpass@localhost/zeus',
 
 }
 
@@ -37,9 +49,9 @@ DevelopmentConfig = {
 TestingConfig = {
     "debug": True,
     "allow_remote_access": True,
-    "template_path": os.path.join(os.path.dirname(__file__), "templates"),
-    "static_path": os.path.join(os.path.dirname(__file__), 'static'),
-    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
+    "template_path": os.path.join(BaseDir, "templates"),
+    "static_path": os.path.join(BaseDir, 'static'),
+    "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -61,9 +73,9 @@ TestingConfig = {
 ProductionConfig = {
     "debug": True,
     "allow_remote_access": True,
-    "template_path": os.path.join(os.path.dirname(__file__), "templates"),
-    "static_path": os.path.join(os.path.dirname(__file__), 'static'),
-    "log_path" : os.path.join(os.path.dirname(__file__), 'logs'),
+    "template_path": os.path.join(BaseDir, "templates"),
+    "static_path": os.path.join(BaseDir, 'static'),
+    "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
     "xsrf_cookies": True,
     "login_url": "/login",
@@ -87,3 +99,10 @@ config = {
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
+
+
+Config = config.get(os.environ.get('CONFIG_NAME', 'default'))
+
+from urls import urls
+
+from db import get_session

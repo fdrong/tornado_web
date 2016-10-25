@@ -5,8 +5,8 @@ __title__ =''
 __author__ = 'fdrong'
 __mtime__ = '16/9/30'
 """
-from app.api_1_0.login import WelcomeHandler, LoginHandler, LogoutHandler
-from app.api_1_0.test import RedisSessionHandler, CeleryTaskHandler
+from app.api.login import WelcomeHandler, LoginHandler, LogoutHandler
+from app.api.test import RedisSessionHandler, CeleryTaskHandler
 
 # 首页
 urls = [
