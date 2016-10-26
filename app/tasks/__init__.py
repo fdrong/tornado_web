@@ -12,4 +12,4 @@ from app.settings import Config
 celery = Celery('celery', backend=Config['CELERY_RESULT_BACKEND'], broker=Config['CELERY_BROKER_URL'])
 platforms.C_FORCE_ROOT = True  # 在ROOT下启动4
 
-from tasks import add
+from test import add
