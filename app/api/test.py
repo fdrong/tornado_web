@@ -10,6 +10,7 @@ from app.api import BaseHandler
 import tornado.web
 import tornado.gen
 from app.tasks import add
+import time
 
 
 class RedisSessionHandler(BaseHandler):
@@ -35,3 +36,19 @@ class CeleryTaskHandler(BaseHandler):
         y = 2
         add.delay(x, y)
         self.write("test for celery task")
+
+
+class GenTaskHandler(BaseHandler):
+
+    @tornado.web.asynchronous
+    @tornado.gen.coroutine
+    def get(self):
+        yield tornado.gen.Task(self.test, "abc")
+        self.write("test for coroutine sleep")
+
+    def test(self, x, callback=None):
+        print "test %s" % x
+        time.sleep(5)
+        print "sleep over"
+        callback(x)
+

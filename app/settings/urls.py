@@ -6,7 +6,7 @@ __author__ = 'fdrong'
 __mtime__ = '16/9/30'
 """
 from app.api.login import WelcomeHandler, LoginHandler, LogoutHandler
-from app.api.test import RedisSessionHandler, CeleryTaskHandler
+from app.api.test import RedisSessionHandler, CeleryTaskHandler, GenTaskHandler
 
 # 首页
 urls = [
@@ -23,5 +23,6 @@ urls += [
 # 测试
 urls += [
     (r'/test/redis_session', RedisSessionHandler),
-    (r'/test/celery_task', CeleryTaskHandler)
+    (r'/test/celery_task', CeleryTaskHandler),
+    (r'/test/gen_task', GenTaskHandler),
 ]
