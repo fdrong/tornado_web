@@ -10,6 +10,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 import tornado.wsgi
+import gevent.wsgi
 import wsgiref.simple_server
 import os
 import tornado.options
@@ -42,6 +43,9 @@ if __name__ == '__main__':
 
 # if __name__ == '__main__':
 #     tornado.options.parse_command_line()
+#     app = Application()
+#     [i.setFormatter(LogFormatter()) for i in logging.getLogger().handlers]
 #     wsgi_app = tornado.wsgi.WSGIAdapter(app)
-#     server = wsgiref.simple_server.make_server(options.host, options.port, wsgi_app)
+#     # server = wsgiref.simple_server.make_server(options.host, options.port, wsgi_app)
+#     server = gevent.wsgi.WSGIServer((options.host, options.port), wsgi_app)
 #     server.serve_forever()
