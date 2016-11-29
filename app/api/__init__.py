@@ -16,7 +16,8 @@ from torndsession.sessionhandler import SessionBaseHandler
 
 class BaseHandler(SessionBaseHandler):
     def get_current_user(self):
-        return self.get_secure_cookie("username")
+        # return self.get_secure_cookie("username")
+        return self.session.get("username", None)
 
     @property
     def logger(self):

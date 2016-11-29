@@ -9,13 +9,13 @@ import tornado.web
 from app.api import BaseHandler
 
 
-class LoginHandler(tornado.web.RequestHandler):
+class LoginHandler(BaseHandler):
     def get(self):
         self.render('login.html')
 
     def post(self):
-        # self.set_secure_cookie("username", self.get_argument("username"), httponly=True, secure=True)
-        self.set_secure_cookie("username", self.get_argument("username"))
+        # self.set_secure_cookie("username", self.get_argument("username"), httponly=True)
+        self.session["username"] = self.get_argument("username")
         self.redirect('/')
 
 
@@ -27,5 +27,6 @@ class WelcomeHandler(BaseHandler):
 
 class LogoutHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        self.clear_cookie("username")
+        # self.clear_cookie("username")
+        self.session.delete("username")
         self.redirect("/")

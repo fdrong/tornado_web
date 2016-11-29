@@ -26,16 +26,25 @@ DevelopmentConfig = {
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
 
-
     # "xsrf_cookies": True,
     "login_url": "/login",
-    # redis session config
-    "driver": "redis",
-    "driver_settings":{
-        "host": 'localhost',
-        "port": 6379,
-        "db": 0,
-        "max_connections": 1024,
+
+    # session config
+    "session":{
+        "driver": "redis",
+        "driver_settings":{
+            "host": 'localhost',
+            "port": 6379,
+            "db": 0,
+            "max_connections": 1024,
+
+        },
+        "force_persistence": True,
+        "cache_driver": True,     # cache driver in application.
+        "cookie_config": {
+            "expires_days": 7,    # 设置cookie有效期是7天
+            "httponly": True      # 设置只在HTTP协议下访问
+        }
     },
 
     # celery config
@@ -55,16 +64,27 @@ TestingConfig = {
     "static_path": os.path.join(BaseDir, 'static'),
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
-    "xsrf_cookies": True,
+    # "xsrf_cookies": True,
     "login_url": "/login",
-    # redis session config
-    "driver": "redis",
-    "driver_settings":{
-        "host": 'localhost',
-        "port": 6379,
-        "db": 0,
-        "max_connections": 1024,
+
+    # session config
+    "session": {
+        "driver": "redis",
+        "driver_settings":{
+            "host": 'localhost',
+            "port": 6379,
+            "db": 0,
+            "max_connections": 1024,
+
+        },
+        "force_persistence": True,
+        "cache_driver": True,     # cache driver in application.
+        "cookie_config": {
+            "expires_days": 7,    # 设置cookie有效期是7天
+            "httponly": True      # 设置只在HTTP协议下访问
+        }
     },
+
     # celery config
     "CELERY_RESULT_BACKEND": "redis://localhost:6379/1",
     "CELERY_BROKER_URL": "redis://localhost:6379/0"
@@ -79,15 +99,25 @@ ProductionConfig = {
     "static_path": os.path.join(BaseDir, 'static'),
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
-    "xsrf_cookies": True,
+    # "xsrf_cookies": True,
     "login_url": "/login",
-    # redis session config
-    "driver": "redis",
-    "driver_settings":{
-        "host": 'localhost',
-        "port": 6379,
-        "db": 0,
-        "max_connections": 1024,
+
+    # session config
+    "session": {
+        "driver": "redis",
+        "driver_settings":{
+            "host": 'localhost',
+            "port": 6379,
+            "db": 0,
+            "max_connections": 1024,
+
+        },
+        "force_persistence": True,
+        "cache_driver": True,     # cache driver in application.
+        "cookie_config": {
+            "expires_days": 7,    # 设置cookie有效期是7天
+            "httponly": True      # 设置只在HTTP协议下访问
+        }
     },
 
     # celery config
