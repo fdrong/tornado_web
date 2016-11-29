@@ -7,6 +7,7 @@ __mtime__ = '16/9/30'
 """
 from app.api.login import WelcomeHandler, LoginHandler, LogoutHandler
 from app.api.test import RedisSessionHandler, CeleryTaskHandler, GenTaskHandler, AsycTesthandler
+from app.api.error import PageNotFoundHandler
 
 # 首页
 urls = [
@@ -26,4 +27,9 @@ urls += [
     (r'/test/celery_task', CeleryTaskHandler),
     (r'/test/gen_task', GenTaskHandler),
     (r'/test/asyc', AsycTesthandler),
+]
+
+# 异常页面
+urls += [
+    (r'.*', PageNotFoundHandler),
 ]
