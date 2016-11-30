@@ -43,12 +43,18 @@ class CeleryTaskHandler(BaseHandler):
 
 class GenTaskHandler(BaseHandler):
 
-    @tornado.web.asynchronous
-    @tornado.gen.coroutine
+    # @tornado.web.asynchronous
+    # @tornado.gen.coroutine
+    @tornado.web.authenticated
     def get(self):
-        a = yield tornado.gen.Task(self.test, "sleep 15s")
-        print a.read()
-        self.write("test for coroutine sleep")
+        # a = yield tornado.gen.Task(self.test, "sleep 15s")
+        # print a.read()
+        self.write({"a":1, "b":2})
+
+    @tornado.web.authenticated
+    def post(self, *args, **kwargs):
+        print self.get_cookie("_xsrf")
+        self.write({"a":1, "b":2})
 
     def test(self, x, callback=None):
         print "test %s" % x

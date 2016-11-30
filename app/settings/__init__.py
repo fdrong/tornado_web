@@ -26,7 +26,7 @@ DevelopmentConfig = {
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
 
-    # "xsrf_cookies": True,
+    "xsrf_cookies": True,
     "login_url": "/login",
 
     # session config
@@ -64,7 +64,7 @@ TestingConfig = {
     "static_path": os.path.join(BaseDir, 'static'),
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
-    # "xsrf_cookies": True,
+    "xsrf_cookies": True,
     "login_url": "/login",
 
     # session config
@@ -99,7 +99,7 @@ ProductionConfig = {
     "static_path": os.path.join(BaseDir, 'static'),
     "log_path" : os.path.join(BaseDir, 'logs'),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
-    # "xsrf_cookies": True,
+    "xsrf_cookies": True,
     "login_url": "/login",
 
     # session config
