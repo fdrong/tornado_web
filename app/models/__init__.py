@@ -11,3 +11,13 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 from .users import User
+
+from .logs import Log
+
+from .permissions import Permission
+
+from .roles import Role
+
+from .user_role import UserRole
+
+from .role_permission import RolePermission

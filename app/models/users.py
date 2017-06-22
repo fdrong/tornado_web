@@ -28,11 +28,23 @@ class User(Base):
     last_name = Column(
         String(60), nullable=True, name='last_name', default=''
     )
-    date_joined = Column(DateTime(
-        timezone=False), default=datetime.datetime.now, name='date_joined'
-    )
     email = Column(String(60), nullable=True, default='', name='email')
     avatar = Column(URLType, nullable=True, default=None, name='avatar')
+
+    last_login_time = Column(DateTime(
+        timezone=False), nullable=True, name='last_login_time'
+    )
+    last_opt_time = Column(DateTime(
+        timezone=False), nullable=True, name='last_opt_time'
+    )
+    otp_request_count = Column(Integer, nullable=False, default=0)
+
+    create_at = Column(DateTime(
+        timezone=False), default=datetime.datetime.now, name='create_at'
+    )
+    update_at = Column(DateTime(
+        timezone=False), onupdate=datetime.datetime.now, default=datetime.datetime.now, name='update_at'
+    )
 
     @property
     def as_dict(self):
@@ -59,14 +71,14 @@ class User(Base):
         return ('{} {}'.format(self.first_name, self.first_name)
                 if self.first_name and self.last_name else self.username)
 
-
-class Account(Base):
-    """
-        users model
-    """
-    __tablename__ = 'account'
-
-    id = Column(Integer, primary_key=True, name='id')
-    username = Column(String(60), nullable=False, name='username')
-    password = Column(String(500), nullable=False, name='password')
+    def can(self, permission):
+        """
+        check the object if has the permission
+        if yes return True
+        else return false
+        """
+        if permission in [item.name for item in self.role.permissions]:
+            return True
+        else:
+            return False
 

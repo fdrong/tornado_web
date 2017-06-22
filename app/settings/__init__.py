@@ -52,7 +52,7 @@ DevelopmentConfig = {
     "CELERY_BROKER_URL": "redis://localhost:6379/0",
 
     # db config
-    'SQLALCHEMY_DATABASE_URI':'postgresql://zeus:newpass@localhost/zeus',
+    'SQLALCHEMY_DATABASE_URI':'postgresql://test:newpass@localhost/test',
 
 }
 
